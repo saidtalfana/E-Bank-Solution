@@ -1,16 +1,12 @@
 package com.bank.springAngular.service;
 
 
-import com.bank.springAngular.repository.CustomerRepository;
+import com.bank.springAngular.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerService {
+public class AccountService {
     @Autowired
-    private CustomerRepository customerRepository;
-
-
-
-
+    private AccountRepository accountRepository;
 }

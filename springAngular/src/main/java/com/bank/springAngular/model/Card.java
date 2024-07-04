@@ -1,5 +1,7 @@
 package com.bank.springAngular.model;
 
+import com.bank.springAngular.enam.CardType;
+import com.bank.springAngular.enam.Statu;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +22,10 @@ public class Card {
     private CardType cardType;
     private Statu statu;
     private Date endDate;
+
+    @ManyToOne
+    @JoinColumn(name ="accountID")
+    private Account account;
 
 
 

@@ -1,11 +1,11 @@
 package com.bank.springAngular.model;
 
+import com.bank.springAngular.enam.AccountType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 
 import java.sql.Date;
@@ -37,5 +37,6 @@ public class Account {
     @OneToMany(mappedBy = "account")
     private Set<Beneficiary> beneficiary;
 
-
+    @OneToMany(mappedBy = "account")
+    private Set<Card> card;
 }

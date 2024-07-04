@@ -1,4 +1,4 @@
-package com.bank.springAngular.model;
+package com.bank.springAngular.enam;
 
 public enum TransactionType {
          debit,

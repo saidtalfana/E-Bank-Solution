@@ -1,5 +1,7 @@
 package com.bank.springAngular.model;
 
+import com.bank.springAngular.enam.StatuTransaction;
+import com.bank.springAngular.enam.TransactionType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,6 +31,10 @@ public class Transaction {
     @ManyToOne
     @JoinColumn( name = "account_id")
     private Account account;
+
+    @ManyToOne
+    @JoinColumn(name="beneficiaryId")
+    private Beneficiary beneficiary;
 
 
 
