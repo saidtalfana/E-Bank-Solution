@@ -32,10 +32,12 @@ public String word(){
  public void deleteCustomer(@PathVariable("id") int id){
   customerService.deleteById(id);
  }
-
+@GetMapping("/{id}")
+private Customer getCustomerById(@PathVariable("id") int id){
+  return customerService.getCustomerById(id);
+}
  @PutMapping("/update/{id}")
  public Customer updateCustomer(@RequestBody Customer customer, @PathVariable("id") int id){
-
   return customerService.updateCustomer(customer);
  }
 

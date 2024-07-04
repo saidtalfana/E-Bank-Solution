@@ -25,7 +25,7 @@ public class CustomerService {
     }
 
     public Customer getCustomerById(int id){
-        return customerRepository.findById(id)
+        return customerRepository.findById(id).get();
     }
 
     public Customer updateCustomer( Customer customer){
