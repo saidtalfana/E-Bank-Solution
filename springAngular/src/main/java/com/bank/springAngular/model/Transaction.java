@@ -1,9 +1,6 @@
 package com.bank.springAngular.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +23,13 @@ public class Transaction {
     private Time time;
     private Double amount;
     private TransactionType tansactionType;
-    private Type type;
+    private StatuTransaction statuTransaction;
+    private String description;
+
+    @ManyToOne
+    @JoinColumn( name = "account_id")
+    private Account account;
+
 
 
 }

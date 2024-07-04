@@ -17,8 +17,8 @@ public class Card {
     private Integer cardID;
     private Integer cardNumber;
     private String name;
-    private String Type;
-    private Status status;
+    private CardType cardType;
+    private Statu statu;
     private Date endDate;
 
 
