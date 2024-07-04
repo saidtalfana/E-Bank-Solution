@@ -31,7 +31,7 @@ public class Account {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer custome;
+    private Customer customer;
 
 
     @OneToMany(mappedBy = "account")
