@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/beneficiary")
-public class BeneficiaryRepository {
+public class BeneficiaryController {
     @Autowired
     private BeneficiaryService beneficiaryService;
 }

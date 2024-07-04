@@ -1,5 +1,6 @@
 package com.bank.springAngular.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,12 +23,13 @@ public class Customer {
     private String name;
     private String lastname;
     private String email;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     private String address;
 
 
     @OneToMany(mappedBy = "customer")
+    @JsonIgnore
     private Set<Account> account ;
 
 

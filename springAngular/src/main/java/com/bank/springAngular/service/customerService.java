@@ -20,6 +20,10 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
+    public void deleteById(int id){
+        customerRepository.deleteById(id);
+    }
+
 
 
 }

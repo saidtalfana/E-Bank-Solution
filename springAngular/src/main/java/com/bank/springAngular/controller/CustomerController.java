@@ -8,11 +8,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customer")
-public class CustomerRepository {
+//@RequestMapping("/customer")
+public class CustomerController {
  @Autowired
  private CustomerService customerService;
 
+
+ @GetMapping("/word")
+public String word(){
+ return "hello enaa";
+}
 
  @PostMapping("/add")
  public Customer addCustomer(@RequestBody Customer customer){
@@ -21,6 +26,10 @@ public class CustomerRepository {
  @GetMapping("/show")
  public List<Customer> getAllCustomer(){
   return customerService.getAllCustomer();
+ }
+ @DeleteMapping("/delete/{id}")
+ public void deleteCustomer(@PathVariable("id") int id){
+  customerService.deleteById(id);
  }
 
 }

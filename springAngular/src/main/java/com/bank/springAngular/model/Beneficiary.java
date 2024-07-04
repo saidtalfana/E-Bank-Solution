@@ -1,5 +1,6 @@
 package com.bank.springAngular.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,6 +24,7 @@ public class Beneficiary {
     private Account account;
 
     @OneToMany(mappedBy = "beneficiary")
+    @JsonIgnore
     private Set<Transaction> transaction;
 
 }

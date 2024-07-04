@@ -1,6 +1,7 @@
 package com.bank.springAngular.model;
 
 import com.bank.springAngular.enam.AccountType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,11 +33,14 @@ public class Account {
 
 
     @OneToMany(mappedBy = "account")
+    @JsonIgnore
     private Set<Transaction> transaction;
 
     @OneToMany(mappedBy = "account")
+    @JsonIgnore
     private Set<Beneficiary> beneficiary;
 
     @OneToMany(mappedBy = "account")
+    @JsonIgnore
     private Set<Card> card;
 }
