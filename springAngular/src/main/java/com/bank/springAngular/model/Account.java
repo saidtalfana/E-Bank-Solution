@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import java.sql.Date;
@@ -24,12 +25,13 @@ public class Account {
     private String accountName;
     private Integer accountNumber;
     private double balance;
+    @DateTimeFormat (pattern = "yyyy-MM-dd")
     private Date creationDate;
     private AccountType accountType;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private Customer custome;
 
 
     @OneToMany(mappedBy = "account")
