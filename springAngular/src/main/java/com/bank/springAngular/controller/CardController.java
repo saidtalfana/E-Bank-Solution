@@ -12,17 +12,16 @@ public class CardController {
     @Autowired
     private CardService cardService;
 
-    @PostMapping("/add_card")
-    public Card registerC(@RequestBody Card card){
-        return cardService.save(card);
+    @PostMapping("/add_card/{id}")
+    public Card registerC(@RequestBody Card card,@PathVariable int id){
+        return cardService.save(card,id);
     }
     @GetMapping("/show_card")
     public List<Card> show(){
         return cardService.showCard();
     }
     @PutMapping("/update_card/{id}")
-    public Card updateCard(@RequestBody Card card, @PathVariable int id){
-        card.setCardID(id);
-        return cardService.save(card);
+    public Card updateCard(@RequestBody Card card,@PathVariable int id){
+        return cardService.save(card,id);
     }
 }

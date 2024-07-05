@@ -23,8 +23,8 @@ public class AccountService {
         return accountRepository.save(account);
     }
 
-    public List<Account> getAllAccounts(int customer_id) {
-        return accountRepository.findByCustomerId(customer_id);
+    public List<Account> getAllAccounts(int id) {
+        return accountRepository.findByCustomerId(id);
     }
 
     public Account getAccountById(int id) {

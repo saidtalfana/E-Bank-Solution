@@ -17,9 +17,9 @@ public class AccountController {
     public Account saveAccount(@PathVariable int customer_id,@RequestBody Account account){
         return accountService.saveAccount(account, customer_id);
     }
-@GetMapping("/all_account/{customer_id}")
-    public List<Account> getAllAccount(int customer_id){
-        return accountService.getAllAccounts(customer_id);
+@GetMapping("/all_account/{id}")
+    public List<Account> getAllAccount(Integer id){
+        return accountService.getAllAccounts(id);
 }
 
 @GetMapping("/find_account/{id}")

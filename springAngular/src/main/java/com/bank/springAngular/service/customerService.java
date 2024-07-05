@@ -21,17 +21,17 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
     public Customer saveCustomer(Customer customer){
-        Account account = new Account();
-        account.setAccountName("CIH");
-        account.setAccountNumber(Math.min(16,24));
-        account.setBalance(2600);
-        account.setCreationDate(new Date(System.currentTimeMillis()));
-        account.setAccountType(saving);
-        if(customer.getAccount()==null){
-            customer.setAccount(new HashSet<>());
-        }
-        customer.getAccount().add(account);
-        account.setCustomer(customer);
+//        Account account = new Account();
+//        account.setAccountName("CIH");
+//        account.setAccountNumber(Math.min(16,24));
+//        account.setBalance(2600);
+//        account.setCreationDate(new Date(System.currentTimeMillis()));
+//        account.setAccountType(saving);
+//        if(customer.getAccount()==null){
+//            customer.setAccount(new HashSet<>());
+//        }
+//        customer.getAccount().add(account);
+//        account.setCustomer(customer);
         return customerRepository.save(customer);
     }
     public List<Customer> getAllCustomer(){
