@@ -3,10 +3,9 @@ package com.bank.springAngular.controller;
 import com.bank.springAngular.model.Card;
 import com.bank.springAngular.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class CardController {
@@ -15,6 +14,15 @@ public class CardController {
 
     @PostMapping("/add_card")
     public Card registerC(@RequestBody Card card){
+        return cardService.save(card);
+    }
+    @GetMapping("/show_card")
+    public List<Card> show(){
+        return cardService.showCard();
+    }
+    @PutMapping("/update_card/{id}")
+    public Card updateCard(@RequestBody Card card, @PathVariable int id){
+        card.setCardID(id);
         return cardService.save(card);
     }
 }
