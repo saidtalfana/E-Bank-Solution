@@ -28,7 +28,7 @@ public class CustomerService {
         return customerRepository.findById(id).get();
     }
 
-    public Customer updateCustomer( Customer customer){
+    public Customer updateCustomer(Customer customer){
         return customerRepository.save(customer);
     }
 

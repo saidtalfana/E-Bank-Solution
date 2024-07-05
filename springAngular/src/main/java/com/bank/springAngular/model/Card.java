@@ -4,6 +4,7 @@ import com.bank.springAngular.enam.CardType;
 import com.bank.springAngular.enam.Statu;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 
@@ -21,6 +22,7 @@ public class Card {
     private String name;
     private CardType cardType;
     private Statu statu;
+    @DateTimeFormat(pattern ="yyyy-mm-dd")
     private Date endDate;
 
     @ManyToOne

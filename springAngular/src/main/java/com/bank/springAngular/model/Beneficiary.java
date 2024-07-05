@@ -1,5 +1,6 @@
 package com.bank.springAngular.model;
 
+import com.bank.springAngular.enam.Bank;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,7 +18,7 @@ public class Beneficiary {
     private Integer beneficiaryID;
     private Integer accountNumber;
     private String name;
-    private String bank;
+    private Bank bank;
 
     @ManyToOne
     @JoinColumn(name = "accountID")

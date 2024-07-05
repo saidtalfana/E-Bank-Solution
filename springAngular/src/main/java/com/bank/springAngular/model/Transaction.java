@@ -8,9 +8,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 @Getter
 @Setter
@@ -22,10 +26,12 @@ public class Transaction {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Integer transactionID;
-    private Date transactionDate;
-    private Time time;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate transactionDate;
+    @DateTimeFormat(pattern = "HH:MM")
+    private LocalTime time;
     private Double amount;
-    private TransactionType tansactionType;
+    private TransactionType transactionType;
     private StatuTransaction statuTransaction;
     private String description;
 

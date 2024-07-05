@@ -38,7 +38,7 @@ private Customer getCustomerById(@PathVariable("id") int id){
 }
  @PutMapping("/update_customer/{id}")
  public Customer updateCustomer(@RequestBody Customer customer, @PathVariable("id") int id){
-  customerService.getCustomerById(id);
+     Customer oldCustomer = customerService.getCustomerById(id);
   return customerService.updateCustomer(customer);
 
  }
