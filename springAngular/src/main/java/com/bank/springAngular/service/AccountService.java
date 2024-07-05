@@ -24,4 +24,8 @@ public class AccountService {
     public Account getAccountById(int id){
        return accountRepository.findById(id).get();
     }
+
+    public Account update(Account account){
+        return accountRepository.save(account);
+    }
 }
