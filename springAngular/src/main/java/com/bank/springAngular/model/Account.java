@@ -28,9 +28,11 @@ public class Account {
     @DateTimeFormat (pattern = "yyyy-MM-dd")
     private Date creationDate;
     private AccountType accountType;
+    private Boolean isClosed = false;
+    private String raisonMssg;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id" , nullable = false)
     private Customer customer;
 
 

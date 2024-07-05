@@ -27,9 +27,11 @@ public class Transaction {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Integer transactionID;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate transactionDate;
+    @Temporal(TemporalType.DATE)
+    private Date transactionDate;
     @DateTimeFormat(pattern = "HH:MM")
-    private LocalTime time;
+    @Temporal(TemporalType.TIME)
+    private Time time;
     private Double amount;
     private TransactionType transactionType;
     private StatuTransaction statuTransaction;

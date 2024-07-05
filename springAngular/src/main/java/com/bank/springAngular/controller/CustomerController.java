@@ -1,6 +1,8 @@
 package com.bank.springAngular.controller;
 
+import com.bank.springAngular.model.Account;
 import com.bank.springAngular.model.Customer;
+import com.bank.springAngular.service.AccountService;
 import com.bank.springAngular.service.CustomerService;
 import jakarta.persistence.PostUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,6 @@ public class CustomerController {
  @Autowired
  private CustomerService customerService;
 
-
  @GetMapping("/word")
 public String word(){
  return "hello enaa";
@@ -23,7 +24,9 @@ public String word(){
  @PostMapping("/add_customer")
  public Customer addCustomer(@RequestBody Customer customer){
   return customerService.saveCustomer(customer);
+
  }
+
  @GetMapping("/show_customer")
  public List<Customer> getAllCustomer(){
   return customerService.getAllCustomer();

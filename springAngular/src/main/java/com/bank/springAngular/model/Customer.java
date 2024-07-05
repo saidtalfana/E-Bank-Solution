@@ -28,7 +28,7 @@ public class Customer {
     private String address;
 
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Account> account ;
 

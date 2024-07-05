@@ -5,6 +5,7 @@ import com.bank.springAngular.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -22,4 +23,9 @@ public class TransactionController {
     public List<Transaction> allTransaction(){
         return transactionService.allTransactions();
     }
+//    @GetMapping("/date/{date}")
+//    public List<Transaction> searchDate(@PathVariable LocalDate date){
+//        return transactionService.allTransactionsByDate(date);
+//
+//    }
 }

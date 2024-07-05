@@ -18,9 +18,11 @@ public class Card {
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Integer cardID;
+
     private Integer cardNumber;
     private String name;
     private CardType cardType;
+    @Column(nullable=false)
     private Statu statu;
     @DateTimeFormat(pattern ="yyyy-mm-dd")
     private Date endDate;
