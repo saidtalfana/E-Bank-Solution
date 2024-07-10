@@ -20,35 +20,20 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public Customer saveCustomer(Customer customer){
-//        Account account = new Account();
-//        account.setAccountName("CIH");
-//        account.setAccountNumber(Math.min(16,24));
-//        account.setBalance(2600);
-//        account.setCreationDate(new Date(System.currentTimeMillis()));
-//        account.setAccountType(saving);
-//        if(customer.getAccount()==null){
-//            customer.setAccount(new HashSet<>());
-//        }
-//        customer.getAccount().add(account);
-//        account.setCustomer(customer);
-        return customerRepository.save(customer);
-    }
-    public List<Customer> getAllCustomer(){
-        return customerRepository.findAll();
-    }
+    public Customer saveCustomer(Customer customer){return customerRepository.save(customer);}
 
-    public void deleteById(int id){
-        customerRepository.deleteById(id);
-    }
+    public List<Customer> getAllCustomer(){return customerRepository.findAll();}
+
+    public void deleteById(int id){customerRepository.deleteById(id);}
 
     public Customer getCustomerById(int id){
-        return customerRepository.findById(id).get();
+        if(customerRepository.findById(id).isPresent())
+            return customerRepository.findById(id).get();
+        else  new RuntimeException("id is not found");
+        return null;
     }
 
-    public Customer updateCustomer(Customer customer){
-        return customerRepository.save(customer);
-    }
+    public Customer updateCustomer(Customer customer){return customerRepository.save(customer);}
 
 
 

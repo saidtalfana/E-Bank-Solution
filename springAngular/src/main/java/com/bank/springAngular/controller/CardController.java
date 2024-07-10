@@ -16,10 +16,12 @@ public class CardController {
     public Card registerC(@RequestBody Card card,@PathVariable int id){
         return cardService.save(card,id);
     }
-    @GetMapping("/show_card")
-    public List<Card> show(){
-        return cardService.showCard();
-    }
+
+//    @GetMapping("/show_card/{id}")
+//    public List<Card> show(@PathVariable int accountID){
+//        return cardService.showCard(accountID);
+//    }
+
     @PutMapping("/update_card/{id}")
     public Card updateCard(@RequestBody Card card,@PathVariable int id){
         return cardService.save(card,id);

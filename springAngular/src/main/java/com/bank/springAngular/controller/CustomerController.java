@@ -31,10 +31,12 @@ public String word(){
  public List<Customer> getAllCustomer(){
   return customerService.getAllCustomer();
  }
+
  @DeleteMapping("/delete_customer/{id}")
  public void deleteCustomer(@PathVariable("id") int id){
   customerService.deleteById(id);
  }
+
 @GetMapping("/find_customer/{id}")
 private Customer getCustomerById(@PathVariable("id") int id){
   return customerService.getCustomerById(id);

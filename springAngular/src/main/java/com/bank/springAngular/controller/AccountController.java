@@ -18,14 +18,14 @@ public class AccountController {
         return accountService.saveAccount(account, customer_id);
     }
 @GetMapping("/all_account/{id}")
-    public List<Account> getAllAccount(Integer id){
+    public List<Account> getAllAccount(@PathVariable Integer id){
         return accountService.getAllAccounts(id);
 }
 
-@GetMapping("/find_account/{id}")
-    public Account find(@PathVariable("id") int id){
-        return accountService.getAccountById(id);
-}
+//@GetMapping("/find_account/{id}")
+//    public Account find(@PathVariable("id") int id){
+//        return accountService.getAccountById(id);
+//}
 
 @PutMapping("/update_account/{accountID}/{raison}")
     public void updateAccount(@PathVariable String raison,@PathVariable int accountID) {

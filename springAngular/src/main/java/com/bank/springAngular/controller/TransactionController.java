@@ -1,5 +1,6 @@
 package com.bank.springAngular.controller;
 
+import com.bank.springAngular.model.Account;
 import com.bank.springAngular.model.Transaction;
 import com.bank.springAngular.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +15,14 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-    @PostMapping("/save_transaction")
-    public Transaction saveAllTransactions(@RequestBody Transaction transaction){
-        return transactionService.save(transaction);
+    @PostMapping("/save_transaction/{id}")
+    public Transaction saveAllTransactions(@RequestBody Transaction transaction,@PathVariable int id){
+        return transactionService.saveTransaction(transaction,id);
     }
 
-    @GetMapping("/all_transaction")
-    public List<Transaction> allTransaction(){
-        return transactionService.allTransactions();
+    @GetMapping("/all_transaction/{id}")
+    public List<Transaction> allTransaction(@PathVariable int id){
+        return transactionService.getTransactionsByAccountId(id);
     }
 //    @GetMapping("/date/{date}")
 //    public List<Transaction> searchDate(@PathVariable LocalDate date){

@@ -6,7 +6,6 @@ public class ExceptionError extends RuntimeException{
     @Serial
     private static final long serialVersionUID = 1L;
     public ExceptionError(String message){
-        super("you hava a problem in" );
     }
 
 }
