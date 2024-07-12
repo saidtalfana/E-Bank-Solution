@@ -1,6 +1,0 @@
-package com.bank.springAngular.model;
-
-public enum ERole {
-    ROLE_USER,
-    ROLE_ADMIN
-}

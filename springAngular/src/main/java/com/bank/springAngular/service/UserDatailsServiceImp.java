@@ -15,6 +15,7 @@ public class UserDatailsServiceImp implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Customer customer = customerRepository.findCustomerByUsername(username);
-      return customer.build().username(customer.getUsername()).password(customer.getPassword()).build();
+//        System.out.println(customer.getUsername()+"///:::22IMPL/"+customer.getPassword());
+        return customer.build().username(customer.getUsername()).password(customer.getPassword()).build();
     }
 }
