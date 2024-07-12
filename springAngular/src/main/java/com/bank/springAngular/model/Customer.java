@@ -9,9 +9,12 @@ import lombok.Generated;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -20,12 +23,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Table(name = "users",
-        uniqueConstraints = {
-                @UniqueConstraint(columnNames = ""),
-                @UniqueConstraint(columnNames = "email")
-        })
-public class Customer {
+
+public class Customer implements UserDetails {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Integer customerID;
@@ -33,7 +32,11 @@ public class Customer {
     @Column(nullable = false, length = 128)
     @NotNull @Length(min = 1, max = 128)
     private String name;
-    private String lastname;
+    @Column
+    private String username;
+    @Column
+    private String password;
+    @Column
     private String email;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
@@ -45,12 +48,31 @@ public class Customer {
     private Set<Account> account ;
 
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return List.of();
+//    }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
 
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
 
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
 
-//    , fetch=FetchType.LAZY, cascade = CascadeType.ALL
-//    @OneToMany(mappedBy = "customer")
-//    private Set<Account> account;
-
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 }
