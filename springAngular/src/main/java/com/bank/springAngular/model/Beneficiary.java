@@ -20,9 +20,8 @@ public class Beneficiary {
     private String name;
     private Bank bank;
 
-    @ManyToOne
-    @JoinColumn(name = "accountID")
-    private Account account;
+    @OneToMany(mappedBy = "beneficiary" )
+    private Set<Account> accounts;
 
     @OneToMany(mappedBy = "beneficiary")
     @JsonIgnore

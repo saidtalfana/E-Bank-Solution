@@ -40,9 +40,9 @@ public class Account {
     @JsonIgnore
     private Set<Transaction> transaction;
 
-    @OneToMany(mappedBy = "account")
-    @JsonIgnore
-    private Set<Beneficiary> beneficiary;
+    @ManyToOne
+    @JoinColumn (name ="benefiary_id")
+    private Beneficiary beneficiary;
 
     @OneToMany(mappedBy = "account")
     @JsonIgnore

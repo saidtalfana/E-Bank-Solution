@@ -13,6 +13,8 @@ import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
+import static com.bank.springAngular.enam.StatuTransaction.extern;
+import static com.bank.springAngular.enam.StatuTransaction.intern;
 import static com.bank.springAngular.enam.TransactionType.credit;
 import static com.bank.springAngular.enam.TransactionType.debit;
 
@@ -28,17 +30,22 @@ public class TransactionService {
     @Autowired
     private BeneficiaryRepository beneficiaryRepository;
 
-    public Transaction saveTransaction(Transaction transaction, int accountid){
+    public Transaction saveTransaction(Transaction transaction, int accountid ){
         Account account = accountRepository.findById(accountid).get();
-       if( account.getBalance()<transaction.getAmount() && transaction.getTransactionType()==credit){
-           throw new RuntimeException("your money is not enough");
-       } else if (account.getBalance()>=transaction.getAmount()) {
-         account.setBalance(account.getBalance()-transaction.getAmount());
 
-       }
-       else if(transaction.getTransactionType()==debit){
-           account.setBalance(account.getBalance()+ transaction.getAmount());
-       }
+
+            if (account.getBalance() < transaction.getAmount() && transaction.getTransactionType() == credit) {
+                throw new RuntimeException("your money is not enough");
+            } else if (account.getBalance() >= transaction.getAmount()) {
+                account.setBalance(account.getBalance() - transaction.getAmount());
+
+            } else if (transaction.getTransactionType() == debit) {
+                account.setBalance(account.getBalance() + transaction.getAmount());
+            }
+
+
+
+
        transaction.setTransactionDate(new Date( System.currentTimeMillis()));
        transaction.setTime( new Time( System.currentTimeMillis()));
         transaction.setAccount(account);

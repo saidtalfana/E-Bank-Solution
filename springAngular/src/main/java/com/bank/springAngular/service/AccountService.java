@@ -11,6 +11,7 @@ import com.bank.springAngular.repository.CustomerRepository;
 import org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForLocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.sql.Date;
 import java.util.List;
@@ -22,14 +23,13 @@ import static com.bank.springAngular.enam.Statu.block;
  */
 @Service
 public class AccountService {
-    @Autowired(required = true)
+    @Autowired
     private AccountRepository accountRepository;
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
     private CardRepository cardRepository;
-    @Autowired
-    private FutureOrPresentValidatorForLocalDate futureOrPresentValidatorForLocalDate;
+
 
     /**
      * Ajoute un nouveau account.
@@ -38,11 +38,14 @@ public class AccountService {
      * @return Le account ajouté.
      */
     public Account saveAccount(Account account, int customer_id) {
+
         Customer user = customerRepository.findById(customer_id).get();
         account.setAccountName("CIH");
-        int random = (int)(Math.random() );
-        int number = 11+random;
-        account.setAccountNumber(random);
+        int r0 = (int)(Math.random() * 86);
+
+        account.setAccountNumber(r0);
+        account.setCreationDate(new Date(System.currentTimeMillis()));
+        account.setIsClosed(Boolean.valueOf("false"));
         account.setBalance(1000);
         account.setCustomer(user);
         return accountRepository.save(account);
@@ -50,17 +53,14 @@ public class AccountService {
     /**
      * Récupère tous les account associés à un utilisateur .
      *
-     * @param id Le id de customer pour lequel récupérer les comptes.
+     * @param cu_id Le id de customer pour lequel récupérer les comptes.
      * @return Liste les comptes associés au customer donné.
      */
-    public List<Account> getAllAccounts(int id) {
-        return accountRepository.findByCustomerId(id);}
-        
+    public List<Account> getAllAccounts(int cu_id) {
+        return accountRepository.findByCustomerId(cu_id);}
 
 
-//    public Account getAccountById(int id) {
-//        return accountRepository.findById(id).get();
-//    }
+
 
     /**
      *
