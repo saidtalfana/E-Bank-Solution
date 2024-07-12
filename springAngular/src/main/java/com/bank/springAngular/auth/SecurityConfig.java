@@ -1,7 +1,6 @@
 package com.bank.springAngular.auth;
 
-import com.bank.springAngular.service.UserDatailsServiceImp;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bank.springAngular.service.UserDetailsServiceImp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,10 +16,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
-public final UserDatailsServiceImp userDatailsService;
-public SecurityConfig(UserDatailsServiceImp userDatailsService) {
-    this.userDatailsService = userDatailsService;
-}
+    private final UserDetailsServiceImp userDetailsService;
+
+    public SecurityConfig(UserDetailsServiceImp userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 @Bean
 //    BCryptPasswordEncoder
     public PasswordEncoder passwordEncoder() {
@@ -37,7 +37,20 @@ public SecurityConfig(UserDatailsServiceImp userDatailsService) {
                             .requestMatchers("/register").permitAll()
                             .anyRequest().authenticated()
             )
-            .formLogin(formLogin ->formLogin.disable()
+            .formLogin(formLogin ->formLogin.disable());// Désactiver le formulaire de login par défaut de Spring Security
+                http.addFilterBefore(new JwtAuthFilter(), UsernamePasswordAuthenticationFilter.class);
+            return http.build();
 }
 
+    @Bean
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+        authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        return authenticationManagerBuilder.build();
+    }
 }
+
+
+
+
+

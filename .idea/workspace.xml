@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f442c93a-f3b5-4c05-bfe2-f4e7c646bf0c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/springAngular/src/main/java/com/bank/springAngular/auth/JwtAuthFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springAngular/src/main/java/com/bank/springAngular/auth/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springAngular/src/main/java/com/bank/springAngular/auth/JwtAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/springAngular/src/main/java/com/bank/springAngular/auth/JwtAuth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springAngular/src/main/java/com/bank/springAngular/auth/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/springAngular/src/main/java/com/bank/springAngular/auth/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springAngular/src/main/java/com/bank/springAngular/repository/customerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/springAngular/src/main/java/com/bank/springAngular/repository/customerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springAngular/src/main/java/com/bank/springAngular/service/UserDatailsServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/springAngular/src/main/java/com/bank/springAngular/service/UserDetailsServiceImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +77,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720166190937</updated>
-      <workItem from="1720790466127" duration="3814000" />
+      <workItem from="1720790466127" duration="7937000" />
     </task>
     <servers />
   </component>

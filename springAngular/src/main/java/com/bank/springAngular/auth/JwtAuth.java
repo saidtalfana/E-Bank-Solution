@@ -18,6 +18,8 @@ public class JwtAuth {
              .setSubject(username)
               .setIssuedAt(new Date(System.currentTimeMillis()))
               .setExpiration(new Date(System.currentTimeMillis() +(2* (24*60*60*100))))
+               .signWith(SECRET_KEY)
+               .compact();
 
       }
   }
