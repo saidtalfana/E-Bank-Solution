@@ -3,9 +3,9 @@ package com.bank.springAngular.controller;
 import com.bank.springAngular.model.Customer;
 import com.bank.springAngular.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class CustomerController {
@@ -13,11 +13,17 @@ public class CustomerController {
  private CustomerService customerService;
 
 
- @PostMapping("/add_customer")
- public Customer addCustomer(@RequestBody Customer customer){
-  return customerService.saveCustomer(customer);
 
+ @PostMapping("/user")
+ public ResponseEntity<?> addCustomer(@RequestBody Customer customer) {
+  try {
+   Customer savedCustomer = customerService.saveCustomer(customer);
+   return ResponseEntity.status(HttpStatus.CREATED).body(savedCustomer);
+  } catch (Exception e) {
+   return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors de l'ajout du client : " + e.getMessage());
+  }
  }
+
 
  @GetMapping("/show_information/{id}")
  public Customer getInfomationCustomer(int id){
@@ -31,5 +37,7 @@ public class CustomerController {
   return customerService.updateCustomer(customer);
 
  }
+
+
 
 }

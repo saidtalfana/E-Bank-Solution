@@ -1,22 +1,17 @@
 package com.bank.springAngular.service;
 
 
-import com.bank.springAngular.enam.Statu;
 import com.bank.springAngular.model.Account;
-import com.bank.springAngular.model.Card;
 import com.bank.springAngular.model.Customer;
 import com.bank.springAngular.repository.AccountRepository;
 import com.bank.springAngular.repository.CardRepository;
 import com.bank.springAngular.repository.CustomerRepository;
-import org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForLocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.sql.Date;
 import java.util.List;
-
-import static com.bank.springAngular.enam.Statu.block;
+import java.util.UUID;
 
 /**
  * Couche de service pour la gestion des opérations liées aux account.
@@ -39,16 +34,19 @@ public class AccountService {
      */
     public Account saveAccount(Account account, int customer_id) {
 
-        Customer user = customerRepository.findById(customer_id).get();
+        Customer customer = customerRepository.findById(customer_id).get();
         account.setAccountName("CIH");
-        int r0 = (int)(Math.random() * 86);
 
-        account.setAccountNumber(r0);
+
+        account.setAccountNumber(Integer.valueOf(generateAccountNumber()));
         account.setCreationDate(new Date(System.currentTimeMillis()));
         account.setIsClosed(Boolean.valueOf("false"));
         account.setBalance(1000);
-        account.setCustomer(user);
+        account.setCustomer(customer);
         return accountRepository.save(account);
+    }
+    public String generateAccountNumber() {
+        return UUID.randomUUID().toString().replace("-","").substring(0,16);
     }
     /**
      * Récupère tous les account associés à un utilisateur .

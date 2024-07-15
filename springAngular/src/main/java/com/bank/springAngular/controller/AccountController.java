@@ -1,7 +1,6 @@
 package com.bank.springAngular.controller;
 
 import com.bank.springAngular.model.Account;
-import com.bank.springAngular.model.Customer;
 import com.bank.springAngular.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

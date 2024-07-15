@@ -9,7 +9,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
@@ -18,6 +17,7 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
+//@Component
 @AllArgsConstructor
 @Builder
 
@@ -33,14 +33,14 @@ public class Customer implements UserDetails {
     private String username;
     @Column
     private String password;
-    @Column
+    @Column(unique = true, length = 100, nullable = false)
     private String email;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     private String address;
 
-
-    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+//   @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer")
     @JsonIgnore
     private Set<Account> account ;
 
